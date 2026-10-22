@@ -4,6 +4,12 @@
 
 ![潮声之间：全岛与朱印风格导航](docs/preview.png)
 
+## 在线体验
+
+[打开 shiosai° · 潮声之间](https://lake-evendim.github.io/shiosai/)
+
+网站由 GitHub Pages 托管，从 `main` 分支根目录自动发布。
+
 ## 体验
 
 - 六处精选风景：全岛、庭院、滨海花园、室内、阅亭、三重塔。
