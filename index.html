@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f3efe5">  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M3 6Q16 10 29 6M5 11h22M8 11l-1 17m17-17 1 17M4 18h24M16 11v7' stroke='%23bc4434' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+<title>shiosai° · 潮声之间</title>
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="controls.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
+<script src="site.js" defer></script>
+<script src="controls.js" defer></script></head>
+<body data-state="arrival" data-view="overall" data-controls="shrine">
+<div id="exhibition" inert>
+<main id="scene" role="img" aria-label="全岛三维场景，可拖动旋转、滚轮缩放、轻触水面"></main>
+<header class="world-header"><button id="home" class="world-brand" aria-label="返回启动页"><svg class="torii" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 6Q16 10 29 6M5 11h22M8 11l-1 17m17-17 1 17M4 18h24M16 11v7"/></svg><span>shiosai<sup>°</sup></span></button><div class="view-tools">
+<button id="more-controls" class="more-trigger" aria-label="更多观看选项" aria-haspopup="menu" aria-expanded="false" aria-controls="view-menu"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg></button>
+<div id="view-menu" class="view-menu" role="menu" aria-label="观看选项" hidden>
+<p class="menu-title">观看选项</p>
+<button id="reset" role="menuitem"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg><span>恢复视角</span></button>
+<button id="focus" role="menuitem" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H4v4m12-4h4v4M4 16v4h4m12-4v4h-4"/></svg><span>专注观看</span></button>
+<button id="fullscreen" role="menuitem" aria-label="进入全屏"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H4v4m12-4h4v4M4 16v4h4m12-4v4h-4"/></svg><span>全屏观看</span></button>
+<div class="menu-rule"></div><button id="made" role="menuitem" aria-expanded="false" aria-controls="about"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 11v6m0-10v1"/></svg><span>关于作品</span></button>
+</div></div></header>
+<aside class="world-story"><h1>潮声<br>之间</h1><p>山泉穿过庭院，潮水环抱岛屿。<br>走进一段缓慢的日常。</p></aside>
+<div class="world-dock" aria-label="右侧风景导航">
+<button id="scene-picker" class="scene-picker" aria-expanded="false" aria-controls="scene-sheet"><span id="current-scene">全岛</span><svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
+<nav class="dock-scenes" aria-label="核心场景"><button data-scene-view="overall" aria-pressed="true">全岛</button><button data-scene-view="garden" aria-pressed="false">庭院</button><button data-scene-view="coastalGarden" aria-pressed="false">滨海花园</button><button data-scene-view="interior" aria-pressed="false">室内</button><button data-scene-view="readingInterior" aria-pressed="false">阅亭</button><button data-scene-view="pagoda" aria-pressed="false">三重塔</button></nav>
+<span class="dock-rule" aria-hidden="true"></span>
+<button id="tune" class="moment-trigger" aria-expanded="false" aria-controls="settings" aria-label="四季与光线"><span class="moment-state"><span class="moment-season"><i class="season-dot" aria-hidden="true"></i><span id="rail-season">春</span></span><span id="rail-time">14:30</span></span><svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
+</div>
+<p class="world-hints">拖动旋转　滚动靠近　轻触水面</p><p class="world-caption" id="world-caption">Between the tides</p><div class="world-frame"></div><div id="view-curtain" aria-hidden="true"></div>
+</div>
+<section id="boot" class="boot" aria-label="作品启动页">
+<div class="ambient"></div>
+
+<div class="boot-core"><svg class="boot-mark torii" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 6Q16 10 29 6M5 11h22M8 11l-1 17m17-17 1 17M4 18h24M16 11v7"/></svg><h1 class="boot-brand">shiosai<sup>°</sup></h1><p class="boot-phrase">潮声之间</p><p class="boot-sub">Small worlds, slow moments.</p></div>
+
+<div class="progress" id="progress" role="progressbar" aria-label="风景加载进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-line"><i></i></div><div class="load-details"><span id="load-message" aria-live="polite">静候潮声</span><span class="percent" id="percent">0%</span></div></div>
+<div class="entry"><button id="enter">走进这座岛</button><p id="entry-note">留一段时间，看看风景。</p></div>
+<footer class="boot-footer"><span>一座想象中的岛屿</span></footer>
+</section>
+  <aside id="settings" class="panel moment-panel" role="dialog" aria-modal="true" aria-labelledby="settings-title" inert>
+<div class="panel-head"><div><h2 id="settings-title">时节与光线</h2><p id="environment-summary">春日午后 · 紫藤初开</p></div><button id="close-panel" class="close" aria-label="关闭环境设置">×</button></div>
+<div class="moment-panel-scroll">
+<p class="control-section-label">时节</p>
+<div class="season-options" role="group" aria-label="季节">
+<button data-season="0" aria-pressed="true"><span>春</span><small>紫藤初开</small></button><button data-season="1" aria-pressed="false"><span>夏</span><small>绣球盛放</small></button><button data-season="2" aria-pressed="false"><span>秋</span><small>枝叶染色</small></button><button data-season="3" aria-pressed="false"><span>冬</span><small>雪落山茶</small></button>
+</div>
+<label hidden><select id="season-select" aria-label="季节"><option value="0">春</option><option value="1">夏</option><option value="2">秋</option><option value="3">冬</option></select></label>
+<label class="setting time-setting"><span class="setting-row">光线与时间 <output id="time-value">14:30</output></span><input id="time" type="range" min="0" max="1" step=".001" value=".429" aria-label="时间"></label>
+<div class="time-endpoints" aria-hidden="true"><span>清晨</span><span>入夜</span></div>
+<div class="light-presets" aria-label="光线预设"><button data-time=".12">午前</button><button data-time=".429" aria-pressed="true">午后</button><button data-time=".82">黄昏</button><button data-time="1">夜晚</button></div>
+<details class="water-details"><summary>潮汐与水面<svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></summary><div class="water-controls">
+<label class="setting"><span class="setting-row">潮位 <output id="tide-value">0.00 m</output></span><input id="tide" type="range" min="-.55" max="0" step=".005" value="0" aria-label="潮位"></label>
+<label class="setting"><span class="setting-row">水面起伏 <output id="wave-value">轻柔</output></span><input id="waves" type="range" min="0" max=".09" step=".001" value=".026" aria-label="水面起伏"></label>
+<label class="toggle-row"><span id="particle-label">飘落花瓣</span><input id="particles" type="checkbox" checked></label>
+</div></details></div></aside>
+  <div id="scrim" hidden></div>
+<section id="scene-sheet" class="scene-sheet" role="dialog" aria-modal="true" aria-labelledby="scene-sheet-title" hidden><div class="sheet-head"><h2 id="scene-sheet-title">走近一处风景</h2><button id="close-scenes" class="close" aria-label="关闭场景选择">×</button></div><div class="scene-sheet-scroll"><div class="scene-grid"><button data-pick-scene="overall" aria-pressed="true"><span>全岛</span><small>岛屿全貌</small></button><button data-pick-scene="garden" aria-pressed="false"><span>庭院</span><small>山泉与庭居</small></button><button data-pick-scene="coastalGarden" aria-pressed="false"><span>滨海花园</span><small>花开四季</small></button><button data-pick-scene="interior" aria-pressed="false"><span>室内</span><small>海景主厅</small></button><button data-pick-scene="readingInterior" aria-pressed="false"><span>阅亭</span><small>书香与茶</small></button><button data-pick-scene="pagoda" aria-pressed="false"><span>三重塔</span><small>林间塔影</small></button></div></div></section>
+<div hidden aria-hidden="true"><span id="readout">春 · 14:30</span><button id="season-cycle"></button><span id="season-name">春</span><button id="tide-toggle"><span id="tide-name">满潮</span></button></div>
+  <article id="about" class="about" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden><button id="close-about" class="close" aria-label="关闭作品介绍">×</button><svg class="tide-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M5 17q9-9 19 0t19 0M5 26q9-9 19 0t19 0M5 35q9-9 19 0t19 0"/></svg><p>shiosai°</p><h2 id="about-title">让日常，<br>在风景里发生。</h2><p class="about-body">一座受日本海岸景观启发的想象岛屿。山泉顺着石坡入庭，庭院、住宅与阅亭沿着水面展开。滨海花园随四季更替，三重塔在林木之后静立。</p><p class="about-body">你可以旋转观看，走近六个精选空间，也可以改变季节、光线与潮位，停留在自己喜欢的时刻。</p><div class="about-foot">海岸 / 庭居 / 四季</div></article>
+  <button id="exit-focus" hidden><svg class="icon" viewBox="0 0 24 24"><path d="m8 4 8 8-8 8"/></svg>退出专注观看</button>
+  <div id="error" role="alert" hidden></div>
+  <div hidden aria-hidden="true"><button id="theme"></button><span id="fps"></span><div id="loading"></div><aside id="water-legend" hidden></aside><div id="hydro-tags" hidden></div><button id="service-door-toggle"></button><input id="water-color" value="#398d91"><input id="ripples" value=".6"><output id="ripple-value"></output><input id="clarity" value=".72"><output id="clarity-value"></output><input id="caustics" value=".55"><output id="caustics-value"></output><input id="sun" value="-35"><output id="sun-value"></output><input id="tilt" value="0"><output id="tilt-value"></output></div>
+
+</body></html>

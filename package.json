@@ -1,0 +1,13 @@
+{
+  "name": "shiosai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "shiosai° · 潮声之间 — 交互式三维海岸岛屿",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
